@@ -32,25 +32,57 @@
             <h1>Collectibles</h1>
             <p>Browse our unique collection of Disney-inspired collectibles!</p>
 
-            <!-- Collectibles Grid -->
-            <div class="collectibles-grid">
-                <div class="collectible-item">
-                    <img src="img/collectible1.png" alt="Collectible 1"> <!-- Placeholder image -->
-                    <h2>Magical Figurine</h2>
-                    <p>Price: $50.00</p>
-                </div>
-                <div class="collectible-item">
-                    <img src="img/collectible2.png" alt="Collectible 2"> <!-- Placeholder image -->
-                    <h2>Fantasy Mug</h2>
-                    <p>Price: $150.00</p>
-                </div>
-                <div class="collectible-item">
-                    <img src="img/collectible3.png" alt="Collectible 3"> <!-- Placeholder image -->
-                    <h2>Enchanted Keychain</h2>
-                    <p>Price: $10.00</p>
-                </div>
+            <!-- Collectibles Table -->
+            <table id="productTable">
+                <tr>
+                    <th>Product</th>
+                    <th>Image</th>
+                    <th>Price</th>
+                    <th class="stock-col" style="display: none;">Stock</th>
+                    <th>Quantity Ordered</th>
+                    <th>Add to Cart</th>
+                </tr>
+                <tr>
+                    <td>Magical Figurine</td>
+                    <td><img src="img/collectible1.png" alt="Magical Figurine" class="product-image" onclick="zoomImage(this)"></td>
+                    <td>$50.00</td>
+                    <td class="stock-col" style="display: none;">20</td> <!-- Example stock -->
+                    <td>
+                        <button class="quantity-btn" onclick="decrementQuantity(this)">-</button>
+                        <span class="quantity-ordered">0</span>
+                        <button class="quantity-btn" onclick="incrementQuantity(this, 20)">+</button>
+                    </td>
+                    <td><button class="add-to-cart" disabled>Add to Cart</button></td>
+                </tr>
+                <tr>
+                    <td>Fantasy Mug</td>
+                    <td><img src="img/collectible2.png" alt="Fantasy Mug" class="product-image" onclick="zoomImage(this)"></td>
+                    <td>$150.00</td>
+                    <td class="stock-col" style="display: none;">5</td> <!-- Example stock -->
+                    <td>
+                        <button class="quantity-btn" onclick="decrementQuantity(this)">-</button>
+                        <span class="quantity-ordered">0</span>
+                        <button class="quantity-btn" onclick="incrementQuantity(this, 5)">+</button>
+                    </td>
+                    <td><button class="add-to-cart" disabled>Add to Cart</button></td>
+                </tr>
+                <tr>
+                    <td>Enchanted Keychain</td>
+                    <td><img src="img/collectible3.png" alt="Enchanted Keychain" class="product-image" onclick="zoomImage(this)"></td>
+                    <td>$10.00</td>
+                    <td class="stock-col" style="display: none;">50</td> <!-- Example stock -->
+                    <td>
+                        <button class="quantity-btn" onclick="decrementQuantity(this)">-</button>
+                        <span class="quantity-ordered">0</span>
+                        <button class="quantity-btn" onclick="incrementQuantity(this, 50)">+</button>
+                    </td>
+                    <td><button class="add-to-cart" disabled>Add to Cart</button></td>
+                </tr>
                 <!-- Add more collectible items as needed -->
-            </div>
+            </table>
+
+            <!-- Toggle Stock Button -->
+            <button onclick="toggleStock()">Show/Hide Stock</button>
         </section>
     </main>
 
@@ -59,5 +91,52 @@
         <p>&copy; 2024 Disney Magic. All Rights Reserved.</p>
         <p><a href="#">Privacy Policy</a> | <a href="#">Contact Us</a></p>
     </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Toggle visibility of the Stock column
+        function toggleStock() {
+            const stockColumns = document.querySelectorAll('.stock-col');
+            stockColumns.forEach(col => {
+                col.style.display = (col.style.display === 'none') ? '' : 'none';
+            });
+        }
+
+        // Increase Quantity Ordered
+        function incrementQuantity(button, maxStock) {
+            const quantityDisplay = button.previousElementSibling;
+            let quantity = parseInt(quantityDisplay.textContent);
+
+            if (quantity < maxStock) {
+                quantity += 1;
+                quantityDisplay.textContent = quantity;
+            }
+        }
+
+        // Decrease Quantity Ordered
+        function decrementQuantity(button) {
+            const quantityDisplay = button.nextElementSibling;
+            let quantity = parseInt(quantityDisplay.textContent);
+
+            if (quantity > 0) {
+                quantity -= 1;
+                quantityDisplay.textContent = quantity;
+            }
+        }
+
+        // Zoom Image Function
+        function zoomImage(image) {
+            const zoomWindow = window.open("", "ImageZoom", "width=600,height=600");
+            zoomWindow.document.write(`
+                <html>
+                    <head><title>Image Zoom</title></head>
+                    <body style="text-align: center;">
+                        <img src="${image.src}" alt="${image.alt}" style="width: 100%; height: auto;">
+                        <br><button onclick="window.close()">Close</button>
+                    </body>
+                </html>
+            `);
+        }
+    </script>
 </body>
 </html>

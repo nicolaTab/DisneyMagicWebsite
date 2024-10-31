@@ -292,3 +292,10 @@ footer a:hover {
     background-color: #ffdf00;
     color: #192b7f;
 }
+
+
+.product-image {
+    width: 250px; /* Adjust width as needed */
+    height: auto; /* Maintains the aspect ratio */
+    max-width: 100%; /* Ensures the image doesn’t exceed the container width */
+}

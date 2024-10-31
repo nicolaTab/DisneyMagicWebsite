@@ -32,7 +32,7 @@
             <h1>Contact Us</h1>
             <p>Have a question? Send us a message and we'll get back to you!</p>
 
-            <form action="send_email.php" method="post">
+            <form id="contactForm" action="send_email.php" method="post" onsubmit="return validateForm()">
                 <!-- Name Fields -->
                 <label for="first-name">First Name:</label>
                 <input type="text" id="first-name" name="first-name" required>
@@ -85,5 +85,8 @@
         <p>&copy; 2024 Disney Magic. All Rights Reserved.</p>
         <p><a href="#">Privacy Policy</a> | <a href="#">Contact Us</a></p>
     </footer>
+
+    <!-- JavaScript for Validation -->
+    <script src="js/formValidation.js"></script>
 </body>
 </html>

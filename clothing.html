@@ -32,25 +32,57 @@
             <h1>Clothing</h1>
             <p>Discover our enchanting Disney-inspired clothing collection!</p>
 
-            <!-- Clothing Grid -->
-            <div class="clothing-grid">
-                <div class="clothing-item">
-                    <img src="img/clothing1.png" alt="Clothing 1"> <!-- Placeholder image -->
-                    <h2>Magical Hoodie</h2>
-                    <p>Price: $35.00</p>
-                </div>
-                <div class="clothing-item">
-                    <img src="img/clothing2.png" alt="Clothing 2"> <!-- Placeholder image -->
-                    <h2>Fantasy Pyjama</h2>
-                    <p>Price: $20.00</p>
-                </div>
-                <div class="clothing-item">
-                    <img src="img/clothing3.png" alt="Clothing 3"> <!-- Placeholder image -->
-                    <h2>Cozy Sweater</h2>
-                    <p>Price: $45.00</p>
-                </div>
+            <!-- Clothing Table -->
+            <table id="productTable">
+                <tr>
+                    <th>Product</th>
+                    <th>Image</th>
+                    <th>Price</th>
+                    <th class="stock-col" style="display: none;">Stock</th>
+                    <th>Quantity Ordered</th>
+                    <th>Add to Cart</th>
+                </tr>
+                <tr>
+                    <td>Magical Hoodie</td>
+                    <td><img src="img/clothing1.png" alt="Magical Hoodie" class="product-image" onclick="zoomImage(this)"></td>
+                    <td>$35.00</td>
+                    <td class="stock-col" style="display: none;">15</td> <!-- Example stock -->
+                    <td>
+                        <button class="quantity-btn" onclick="decrementQuantity(this)">-</button>
+                        <span class="quantity-ordered">0</span>
+                        <button class="quantity-btn" onclick="incrementQuantity(this, 15)">+</button>
+                    </td>
+                    <td><button class="add-to-cart" disabled>Add to Cart</button></td>
+                </tr>
+                <tr>
+                    <td>Fantasy Pyjama</td>
+                    <td><img src="img/clothing2.png" alt="Fantasy Pyjama" class="product-image" onclick="zoomImage(this)"></td>
+                    <td>$20.00</td>
+                    <td class="stock-col" style="display: none;">10</td> <!-- Example stock -->
+                    <td>
+                        <button class="quantity-btn" onclick="decrementQuantity(this)">-</button>
+                        <span class="quantity-ordered">0</span>
+                        <button class="quantity-btn" onclick="incrementQuantity(this, 10)">+</button>
+                    </td>
+                    <td><button class="add-to-cart" disabled>Add to Cart</button></td>
+                </tr>
+                <tr>
+                    <td>Cozy Sweater</td>
+                    <td><img src="img/clothing3.png" alt="Cozy Sweater" class="product-image" onclick="zoomImage(this)"></td>
+                    <td>$45.00</td>
+                    <td class="stock-col" style="display: none;">8</td> <!-- Example stock -->
+                    <td>
+                        <button class="quantity-btn" onclick="decrementQuantity(this)">-</button>
+                        <span class="quantity-ordered">0</span>
+                        <button class="quantity-btn" onclick="incrementQuantity(this, 8)">+</button>
+                    </td>
+                    <td><button class="add-to-cart" disabled>Add to Cart</button></td>
+                </tr>
                 <!-- Add more clothing items as needed -->
-            </div>
+            </table>
+            
+            <!-- Toggle Stock Button -->
+            <button onclick="toggleStock()">Show/Hide Stock</button>
         </section>
     </main>
 
@@ -59,5 +91,52 @@
         <p>&copy; 2024 Disney Magic. All Rights Reserved.</p>
         <p><a href="#">Privacy Policy</a> | <a href="#">Contact Us</a></p>
     </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Toggle visibility of the Stock column
+        function toggleStock() {
+            const stockColumns = document.querySelectorAll('.stock-col');
+            stockColumns.forEach(col => {
+                col.style.display = (col.style.display === 'none') ? '' : 'none';
+            });
+        }
+
+        // Increase Quantity Ordered
+        function incrementQuantity(button, maxStock) {
+            const quantityDisplay = button.previousElementSibling;
+            let quantity = parseInt(quantityDisplay.textContent);
+
+            if (quantity < maxStock) {
+                quantity += 1;
+                quantityDisplay.textContent = quantity;
+            }
+        }
+
+        // Decrease Quantity Ordered
+        function decrementQuantity(button) {
+            const quantityDisplay = button.nextElementSibling;
+            let quantity = parseInt(quantityDisplay.textContent);
+
+            if (quantity > 0) {
+                quantity -= 1;
+                quantityDisplay.textContent = quantity;
+            }
+        }
+
+        // Zoom Image Function
+        function zoomImage(image) {
+            const zoomWindow = window.open("", "ImageZoom", "width=600,height=600");
+            zoomWindow.document.write(`
+                <html>
+                    <head><title>Image Zoom</title></head>
+                    <body style="text-align: center;">
+                        <img src="${image.src}" alt="${image.alt}" style="width: 100%; height: auto;">
+                        <br><button onclick="window.close()">Close</button>
+                    </body>
+                </html>
+            `);
+        }
+    </script>
 </body>
 </html>
