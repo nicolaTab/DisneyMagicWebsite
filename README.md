@@ -1,6 +1,7 @@
+
 # Disney Magic Website
 
-Welcome to **Disney Magic**, a website dedicated to showcasing a catalog of Disney-inspired products. This project is designed to meet specific educational requirements and demonstrates HTML, CSS, and basic web development concepts.
+Welcome to **Disney Magic**, a website dedicated to showcasing a catalog of Disney-inspired products. This project is designed to meet specific educational requirements and demonstrates HTML, CSS, JavaScript, and basic web development concepts.
 
 ## Project Overview
 
@@ -23,25 +24,29 @@ Users can explore the catalog, view detailed product listings, and contact the s
 
 - **Homepage** with a welcoming introduction and links to different product categories.
 - **Product Catalog Pages**: Each category has a dedicated page (Toys, Clothing, Collectibles) with a grid layout showcasing products, images, names, and prices.
-- **Contact Form**: Allows users to submit their details and inquiries directly through the website.
+    - **Stock Toggle**: Show or hide the available stock for each product.
+    - **Quantity Controls**: Use `+` and `-` buttons to adjust order quantity, limited by available stock.
+    - **Image Zoom**: Click on images to enlarge them in a new window with a close option.
+- **Contact Form**: Includes form validation to check required fields, email format, and highlights errors for a better user experience.
 - **Responsive Design**: Optimized for different screen sizes, providing a user-friendly experience across devices.
 
 ## Technologies Used
 
 - **HTML**: Provides the structure of the pages.
 - **CSS**: Adds styling for visual appeal.
+- **JavaScript**: Adds dynamic functionality (stock toggle, quantity controls, image zoom, and form validation).
 - **PHP** (optional): Handles the backend of the contact form (if server-side email functionality is needed).
 - **Git**: Version control for managing project changes.
   
 ## Project Structure
-
 
 ```
 DisneyMagicWebsite/
 ├── css/               # Stylesheets
 │   └── styles.css     # Main CSS file
 ├── img/               # Images for products and logos
-├── js/                # JavaScript files (currently unused but reserved for future features)
+├── js/                # JavaScript files
+│   └── formValidation.js # Form validation script
 ├── index.html         # Homepage
 ├── toys.html          # Toys catalog page
 ├── clothing.html      # Clothing catalog page
@@ -67,4 +72,4 @@ DisneyMagicWebsite/
 
 ## Contact
 
-If you have questions or suggestions, please feel free to reach out.
+If you have questions or suggestions, please feel free to reach out :)
