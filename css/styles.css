@@ -10,6 +10,10 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
     color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
 }
 
 /* Header styling */
@@ -62,6 +66,7 @@ header {
 main {
     padding: 20px;
     text-align: center;
+    flex: 1;
 }
 
 .welcome h1 {
@@ -100,6 +105,9 @@ footer {
     padding: 10px 0;
     text-align: center;
     margin-top: 30px;
+    text-align: center;
+    padding: 10px;
+    background-color: #a41717;
 }
 
 footer a {
@@ -299,3 +307,28 @@ footer a:hover {
     height: auto; /* Maintains the aspect ratio */
     max-width: 100%; /* Ensures the image doesn’t exceed the container width */
 }
+
+/* Apply background to the whole page */
+body {
+    background-image: url('img/disney_background.png');
+    background-size: cover;         /* Ensures the image covers the entire screen */
+    background-repeat: no-repeat;   /* Prevents the image from repeating */
+    background-attachment: fixed;   /* Keeps the background fixed on scroll */
+    background-position: center;    /* Centers the background image */
+}
+
+/* Optional: Apply only to specific sections */
+.main-content {
+    background-image: url('img/disney_background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.content-section {
+    background: rgba(255, 255, 255, 0.9);  /* White background with 90% opacity */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+

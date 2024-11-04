@@ -1,7 +1,6 @@
-
 # Disney Magic Website
 
-Welcome to **Disney Magic**, a website dedicated to showcasing a catalog of Disney-inspired products. This project is designed to meet specific educational requirements and demonstrates HTML, CSS, JavaScript, and basic web development concepts.
+Welcome to **Disney Magic**, a website dedicated to showcasing a catalog of Disney-inspired products. This project demonstrates a range of web development skills, including HTML, CSS, JavaScript, PHP, and dynamic features for an interactive user experience.
 
 ## Project Overview
 
@@ -10,7 +9,7 @@ The Disney Magic website offers an online catalog for different categories of ma
 - **Clothing**
 - **Collectibles**
 
-Users can explore the catalog, view detailed product listings, and contact the store via a contact form.
+Users can explore the catalog, view product details, adjust quantities, and interact with a contact form for inquiries.
 
 ## Table of Contents
 
@@ -22,37 +21,49 @@ Users can explore the catalog, view detailed product listings, and contact the s
 
 ## Features
 
-- **Homepage** with a welcoming introduction and links to different product categories.
-- **Product Catalog Pages**: Each category has a dedicated page (Toys, Clothing, Collectibles) with a grid layout showcasing products, images, names, and prices.
-    - **Stock Toggle**: Show or hide the available stock for each product.
-    - **Quantity Controls**: Use `+` and `-` buttons to adjust order quantity, limited by available stock.
-    - **Image Zoom**: Click on images to enlarge them in a new window with a close option.
-- **Contact Form**: Includes form validation to check required fields, email format, and highlights errors for a better user experience.
-- **Responsive Design**: Optimized for different screen sizes, providing a user-friendly experience across devices.
+- **Homepage** with an introduction, links to all product categories, and a new Disney-inspired background for an immersive feel.
+- **Product Catalog Pages**: Each category has a dedicated PHP page (Toys, Clothing, Collectibles) with:
+    - **Dynamic Stock Toggle**: Show or hide available stock for each product.
+    - **Quantity Controls**: Adjust quantity using `+` and `-` buttons, capped by the available stock. Quantities are dynamically passed to the cart upon addition.
+    - **Image Zoom Feature**: Enlarge images in a new window by clicking, with a close option for a better view.
+- **Shopping Cart**:
+    - **Add to Cart Functionality**: Cart items are stored in the session, with quantities managed through user-selected values.
+    - **Session-based Storage**: Keeps cart information for the session duration.
+- **Contact Form**: Validates user input on both client and server sides, highlighting any issues directly for the user and ensuring all fields are correctly formatted.
+- **Responsive Design**: Optimized for desktop, tablet, and mobile devices.
+- **Footer with Sticky Positioning**: Ensures a consistent footer position at the bottom of all pages.
 
 ## Technologies Used
 
-- **HTML**: Provides the structure of the pages.
-- **CSS**: Adds styling for visual appeal.
-- **JavaScript**: Adds dynamic functionality (stock toggle, quantity controls, image zoom, and form validation).
-- **PHP** (optional): Handles the backend of the contact form (if server-side email functionality is needed).
-- **Git**: Version control for managing project changes.
-  
+- **HTML**: Structured the content for each page.
+- **CSS**: Provided styles for layout, spacing, color, and a custom Disney-inspired background.
+- **JavaScript**: Enabled dynamic elements (stock toggle, quantity controls, image zoom, form validation).
+- **PHP**: Managed backend functionalities:
+  - Handled session management for the shopping cart.
+  - Enabled file includes for a clean, modular layout (e.g., header and footer).
+  - Validated contact form server-side to enhance security.
+- **Git**: Version control for managing project updates.
+
 ## Project Structure
 
 ```
 DisneyMagicWebsite/
-├── css/               # Stylesheets
-│   └── styles.css     # Main CSS file
-├── img/               # Images for products and logos
-├── js/                # JavaScript files
-│   └── formValidation.js # Form validation script
-├── index.html         # Homepage
-├── toys.html          # Toys catalog page
-├── clothing.html      # Clothing catalog page
-├── collectibles.html  # Collectibles catalog page
-├── contact.html       # Contact form page
-└── README.md          # Project documentation
+├── css/                # Stylesheets
+│   └── styles.css      # Main CSS file with background and layout styling
+├── img/                # Disney-inspired images, including products and background
+├── js/                 # JavaScript files for dynamic features
+│   ├── formValidation.js  # Validates the contact form
+│   └── cartLogic.js       # Manages cart operations
+├── php/                # PHP includes for modularity
+│   ├── header.inc.php  # Header section include
+│   ├── footer.inc.php  # Footer section include
+│   └── varSession.inc.php  # Session-based variables
+├── index.php           # Homepage
+├── toys.php            # Toys catalog page
+├── clothing.php        # Clothing catalog page
+├── collectibles.php    # Collectibles catalog page
+├── contact.php         # Contact form page
+└── README.md           # Project documentation
 ```
 
 ## How to Run Locally
@@ -63,13 +74,14 @@ DisneyMagicWebsite/
    cd DisneyMagicWebsite
    ```
 
-2. **Run on a local server** (if PHP email functionality is required):
-   - Place the project folder inside the `htdocs` folder of XAMPP/WAMP.
-   - Start the local server and access the site at `http://localhost/DisneyMagicWebsite/`.
+2. **Run on a Local Server**:
+   - Place the project folder in the `htdocs` folder of XAMPP/WAMP.
+   - Launch XAMPP, start the Apache and MySQL servers.
+   - Visit `http://localhost/DisneyMagicWebsite/index.php` in a browser.
 
-3. **Open directly** (without PHP email functionality):
-   - Open `index.html` directly in a web browser to view the static site.
+3. **Alternative without PHP functionality**:
+   - Open `index.php` directly in a web browser for a static preview, though some PHP features may not work.
 
 ## Contact
 
-If you have questions or suggestions, please feel free to reach out :)
+For questions or suggestions, feel free to reach out. Enjoy exploring the magic of Disney! 😊
